@@ -19,7 +19,7 @@ class ImagesPage(WebBase):
         self.search_box = WebElement(self.driver, class_name="input__control")
         self.first_image = WebElement(self.driver, class_name="serp-item_pos_0")
         self.descriptions_field = WebElement(self.driver, class_name="MMSidebar-Container")
-        self.open_image = WebElement(self.driver, class_name="MMImage-Origin")
+        self.preview_open_image = WebElement(self.driver, class_name="MMImage-Preview")
         self.title_open_image = WebElement(self.driver, class_name="MMOrganicSnippet-Title")
         self.circle_button_next = WebElement(self.driver, class_name="CircleButton_type_next")
         self.circle_button_prev = WebElement(self.driver, class_name="CircleButton_type_prev")
