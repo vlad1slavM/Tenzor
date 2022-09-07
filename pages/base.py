@@ -22,3 +22,10 @@ class WebBase:
     def get(self, url):
         self.driver.get(url)
         time.sleep(5)
+
+    def refresh(self):
+        self.driver.refresh()
+
+    def switch_to_next_page(self):
+        window_after = self.driver.window_handles[1]
+        self.driver.switch_to.window(window_after)

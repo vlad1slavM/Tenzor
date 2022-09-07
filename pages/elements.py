@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 from selenium.webdriver.remote.webelement import WebElement as seleniumWebElement
+from selenium.webdriver import ActionChains
 import time
 
 
@@ -54,6 +55,15 @@ class WebElement:
     def get_href(self) -> str:
         element = self.find()
         return element.get_attribute("href")
+
+    def click(self, hold_seconds=1, x_offset=1, y_offset=1):
+        element = self.find()
+        try:
+            action = ActionChains(self.driver)
+            action.move_to_element_with_offset(element, x_offset, y_offset). \
+                pause(hold_seconds).click(on_element=element).perform()
+        except Exception as e:
+            print(f"Something wrong with click\nException: {e}")
 
 
 class WebElements(WebElement):
