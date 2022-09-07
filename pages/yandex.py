@@ -20,6 +20,5 @@ class ImagesPage(WebBase):
         self.first_image = WebElement(self.driver, class_name="serp-item_pos_0")
         self.descriptions_field = WebElement(self.driver, class_name="MMSidebar-Container")
         self.preview_open_image = WebElement(self.driver, class_name="MMImage-Preview")
-        self.title_open_image = WebElement(self.driver, class_name="MMOrganicSnippet-Title")
         self.circle_button_next = WebElement(self.driver, class_name="CircleButton_type_next")
         self.circle_button_prev = WebElement(self.driver, class_name="CircleButton_type_prev")
