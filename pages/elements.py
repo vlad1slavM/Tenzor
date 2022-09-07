@@ -12,7 +12,7 @@ import time
 class WebElement:
     driver = None
 
-    def __init__(self, driver: webdriver,  **kwargs):
+    def __init__(self, driver: webdriver, **kwargs):
         self.driver = driver
         self._wait = WebDriverWait(self.driver, 15, 0.3, ignored_exceptions=StaleElementReferenceException)
         for attr in kwargs:
@@ -52,9 +52,9 @@ class WebElement:
         element = self.find()
         element.send_keys(Keys.ENTER)
 
-    def get_href(self) -> str:
+    def get_attribute(self, attribute: str) -> str:
         element = self.find()
-        return element.get_attribute("href")
+        return element.get_attribute(attribute)
 
     def click(self, hold_seconds=1, x_offset=1, y_offset=1):
         element = self.find()
@@ -64,6 +64,19 @@ class WebElement:
                 pause(hold_seconds).click(on_element=element).perform()
         except Exception as e:
             print(f"Something wrong with click\nException: {e}")
+
+    def get_text(self):
+        """ Get text of the element. """
+
+        element = self.find()
+        text = ''
+
+        try:
+            text = str(element.text)
+        except Exception as e:
+            print('Error: {0}'.format(e))
+
+        return text
 
 
 class WebElements(WebElement):
