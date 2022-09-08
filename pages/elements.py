@@ -34,6 +34,10 @@ class WebElement:
         return False
 
     def send_keys(self, keys: str, wait: int = 2) -> None:
+        """
+        :param keys: Текст, который нужно будет отправить в поле
+        :param wait: Время ожидание после введения текста
+        """
         keys = keys.replace('\n', '\ue007')
 
         element = self.find()
@@ -55,7 +59,7 @@ class WebElement:
         element = self.find()
         return element.get_attribute(attribute)
 
-    def click(self, hold_seconds=1, x_offset=1, y_offset=1):
+    def click(self, hold_seconds=1, x_offset=1, y_offset=1) -> None:
         element = self.find()
         try:
             action = ActionChains(self.driver)
@@ -64,7 +68,7 @@ class WebElement:
         except Exception as e:
             print(f"Something wrong with click\nException: {e}")
 
-    def get_text(self):
+    def get_text(self) -> str:
         """ Get text of the element. """
 
         element = self.find()
@@ -82,7 +86,7 @@ class WebElements(WebElement):
     def __init__(self, driver, **kwargs):
         super().__init__(driver, **kwargs)
 
-    def find(self):
+    def find(self) -> seleniumWebElement:
         """ Find elements on the page. """
 
         elements = []
@@ -97,7 +101,7 @@ class WebElements(WebElement):
 
         return elements
 
-    def get_attributes(self, attribute: str):
+    def get_attributes(self, attribute: str) -> str:
         results = []
         elements = self.find()
 

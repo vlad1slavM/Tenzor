@@ -8,7 +8,7 @@ class TestYandex:
 
     def test_search_yandex(self):
         page = MainPage(self.driver)
-        assert page.search_field.is_visible() is True, "Поле ввода было не найдено"
+        assert page.search_field.is_visible(), "Поле ввода было не найдено"
         page.search_field.send_keys("Тензор")
         page.search_field.press_enter()
         hrefs = page.links_list.get_attributes("href")
@@ -16,7 +16,7 @@ class TestYandex:
 
     def test_image_yandex(self):
         page = MainPage(self.driver)
-        assert page.link_images.is_visible() is True, "Ссылка на картинки была не найдена"
+        assert page.link_images.is_visible(), "Ссылка на картинки была не найдена"
         page.link_images.click()
         page.switch_to_next_page()
         url = page.get_current_url()
@@ -27,7 +27,7 @@ class TestYandex:
         input_text = image_page.search_box.get_attribute("value")
         assert category_name == input_text, "Навзание категории нет в поле поиска, либо не совпадает"
         image_page.first_image.click()
-        assert image_page.descriptions_field.is_visible() is True, "Первая картинка не была открыта"
+        assert image_page.descriptions_field.is_visible(), "Первая картинка не была открыта"
         time.sleep(2)
         first_open_image = image_page.preview_open_image.get_attribute("src")
         image_page.circle_button_next.click()
